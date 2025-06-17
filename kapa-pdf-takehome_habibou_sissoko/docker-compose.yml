@@ -1,0 +1,17 @@
+services:
+  app:
+    build: .
+    container_name: streamlit_app
+    image: app
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./app:/workspace/app
+      - ./src:/workspace/src
+      - ./data:/workspace/data
+    environment:
+      - PYTHONPATH=/workspace
+    env_file:
+      - .env
+    stdin_open: true
+    tty: true
